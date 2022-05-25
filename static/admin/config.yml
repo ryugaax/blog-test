@@ -1,0 +1,27 @@
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+
+
+media_folder: "content/images"
+public_folder: "/images"
+
+
+collections:
+  - name: 'post'
+    label: 'Posts'
+    folder: 'content/post'
+    create: true
+    slug: '{{year}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string' , required: true }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' , required: true }
+      - { label: 'Authors', name: 'authors', widget: 'list', default: ["SIM IT Club"], required: true }
+      - { label: 'Tags', name: 'tags', widget: 'list', required: true }
+      - { label: 'Categories', name: 'categories', widget: 'list', required: true }
+      - { label: 'Header Image', name: 'images', widget: 'list', required: false, summary: '{{fields.image}}', field: {label: Image, name: 'image', widget: image}}
+      - { label: 'Draft', name: 'draft', widget: 'boolean', default: false, required: false }
+      - { label: 'Content', name: 'body', widget: 'markdown', required: true }
